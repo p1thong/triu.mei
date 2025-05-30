@@ -295,3 +295,16 @@ document.querySelector(".startForm").addEventListener("mousemove", (e) => {
     img.remove();
   }, 2000); // thời gian dấu vết tồn tại
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const audio = new Audio("/audio/videoplayback.mp3");
+  audio.loop = true;
+
+  function playAudio() {
+    audio.play().catch((e) => {
+      console.warn("Không thể phát âm thanh:", e);
+    });
+    document.removeEventListener("click", playAudio);
+  }
+
+  document.addEventListener("click", playAudio);
+});
